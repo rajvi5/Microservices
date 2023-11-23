@@ -15,12 +15,14 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    //http://localhost:8080/employee-service/employees/2
     @GetMapping("/employees/{id}")
     private ResponseEntity<EmployeeResponse> getEmployeeDetails(@PathVariable("id") int id) {
         EmployeeResponse employee = employeeService.getEmployeeById(id);
         return ResponseEntity.status(HttpStatus.OK).body(employee);
     }
 
+    //http://localhost:8080/employee-service/employeesUsingFeign/2
     @GetMapping("/employeesUsingFeign/{id}")
     private ResponseEntity<EmployeeResponse> getEmployeeDetailsUsingFeign(@PathVariable("id") int id) {
         EmployeeResponse employee = employeeService.getEmployeeByIdUsingFeign(id);

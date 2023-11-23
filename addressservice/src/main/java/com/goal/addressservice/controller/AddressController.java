@@ -15,11 +15,14 @@ public class AddressController
     @Autowired
     private AddressService addressService;
 
+    //http://localhost:8081/address-service/addressByEmpId/1
     @GetMapping("/addressByEmpId/{employeeId}")
     public ResponseEntity<AddressResponse> getAddressByEmployeeId(@PathVariable("employeeId") int employeeId) {
         AddressResponse addressResponse = addressService.findAddressByEmployeeId(employeeId);
         return ResponseEntity.status(HttpStatus.OK).body(addressResponse);
     }
+
+    //http://localhost:8081/address-service/address/1
     @GetMapping("/address/{id}")
     private ResponseEntity<AddressResponse> getAddressDetails(@PathVariable("id") int id) {
         AddressResponse addressResponse = addressService.findAddressById(id);
